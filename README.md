@@ -41,6 +41,8 @@
 
 
 
+
+
 | DOM Selector | Events | Emit Signal | Handler (has state and logic to change that, emits event at end) | Store (state changes)| Views Affected (Views watche for state changes and adjust) |
 |--|--|--|--|--|--|
 |   `button#login`   |   `click`    |   `-X-`   | `app.user.handleLogin` & `login_success` or `login_failure`  | `-X-` |
