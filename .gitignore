@@ -7,3 +7,4 @@ dump.rdb
 .sync
 .sync/
 ves-flow-config/
+*.log
