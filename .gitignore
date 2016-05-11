@@ -4,7 +4,6 @@ bower_components/
 secrets.js
 server/config/secrets.js
 dump.rdb
-dist/
 .sync
 .sync/
 ves-flow-config/
