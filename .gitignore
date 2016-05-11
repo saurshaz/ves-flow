@@ -1,0 +1,9 @@
+node_modules/
+build/
+bower_components/
+secrets.js
+server/config/secrets.js
+dump.rdb
+.sync
+.sync/
+ves-flow-config/

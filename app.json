@@ -1,0 +1,9 @@
+{
+  "name": "ves-flow",
+  "description": "View Event State Flow",
+  "repository": "https://github.com/saurshaz/ves-flow",
+  "logo": "https://ves-flow-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "static", "riot","webpack"],
+  "addons" : [
+  ]
+}
