@@ -28,4 +28,6 @@
 ## Feedback/suggestions welcome, create an issue ##
 
 
+The example is achieving cross-component communication using the above methodology (`ves`)
+
 ![Demo](/demo.gif)
