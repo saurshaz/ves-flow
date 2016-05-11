@@ -1,10 +1,9 @@
 {
-  "name": "riot-dyna",
-  "description": "Riot Sample Starter App Template",
-  "repository": "https://github.com/saurshaz/riot-dyna",
-  "logo": "https://node-js-sample.herokuapp.com/node.svg",
-  "keywords": ["node", "express", "static", "riot","riotcontrol", "webpack", "mongodb"],
+  "name": "ves-flow",
+  "description": "View Event State Flow",
+  "repository": "https://github.com/saurshaz/ves-flow",
+  "logo": "https://ves-flow-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "static", "riot","webpack"],
   "addons" : [
-  	"mongohq"
   ]
 }

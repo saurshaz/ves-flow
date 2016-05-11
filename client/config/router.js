@@ -5,8 +5,6 @@ import router from 'riot-router'
 import sidenav from '../components/sidenav.html'
 import header from '../components/header.html'
 
-window.location.hash = window.location.hash || '#home'
-
 // Redirect unlogged users to /login page
 function processorFilter (request, response, next) {
   let view = request.uri.slice(1)
@@ -24,6 +22,7 @@ function processorFilter (request, response, next) {
     }
   }
   try {
+    view = view || 'login'
     require('../components/' + view + '.html')
     let options = {
       domain: extraParams.domain,

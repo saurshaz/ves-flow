@@ -1,5 +1,5 @@
 'use strict'
-let PubSub = require('../../public/scripts/pubsub.js')
+let PubSub = require('../scripts/pubsub.js')
 // todo :: implement universal state here
 // make the change in needed JSOn and then emit an update change for that store
 

@@ -21,7 +21,7 @@ module.exports = {
       'webpack-dev-server/client?http://' + host + ':' + port + '/main.js', // WebpackDevServer host and port
       'webpack/hot/dev-server?http://' + host + ':' + port + '/main.js', // WebpackDevServer host and port
       'webpack-hot-middleware/client?path=http://' + host + ':' + port + '/main.js',
-      './client/config/main.js'
+      './dist/config/main.js'
 
     ]
   },
@@ -44,7 +44,7 @@ module.exports = {
     loaders: [{
       test: /\.js|\.html$/,
       exclude: /node_modules/,
-      include: /client/,
+      include: /dist/,
       loader: 'riotjs-loader',
       query: {
         modules: 'common'
@@ -52,7 +52,7 @@ module.exports = {
     }, {
       test: /\.js|\.html$/,
       exclude: /node_modules/,
-      include: /client/,
+      include: /dist/,
       loader: 'babel-loader',
       query: {
         modules: 'common'
