@@ -3,7 +3,7 @@
 ##  **V**iews (configurable)**E**vents **S**tate       ##
 #########################################################
 
-- Example at http://saurshaz.github.io/ves-flow/#login?domain=user&page=login
+
 
 ## Setup ?
 
@@ -30,19 +30,6 @@
 ## Feedback/suggestions welcome, create an issue ##
 
 
+The example is achieving cross-component communication using the above methodology (`ves`)
+
 ![Demo](/demo.gif)
-
-#### Some Disclaimers
-- This is not **Flux**, but has borrowed many things from **Flux** & **redux**
-- This is not **PubSub** only, but some part of it is
-- Here's a mind-map of the system. A more detailed arch-diagram will be there as things evolve
-
-
-
-
-
-| DOM Selector | Events | Emit Signal | Handler (has state and logic to change that, emits event at end) | Store (state changes)| Views Affected (Views watche for state changes and adjust) |
-|--|--|--|--|--|--|
-|   `button#login`   |   `click`    |   `-X-`   | `app.user.handleLogin` & `login_success` or `login_failure`  | `-X-` |  `-X-` |
-| `-X-`  | `-X-` | `login_success` | `app.user.stateChanged`  | `UserStore`, `AuthStore` | `LoginView`, `HomeView` |
-| `-X-`  | `-X-` | `login_failure` | `app.user.stateChanged` |  `AuthStore` |  `LoginView` |
