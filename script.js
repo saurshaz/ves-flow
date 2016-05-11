@@ -1,6 +1,0 @@
-var fs = require('fs')
-var browserify = require('browserify')
-browserify('./script.js')
-  .transform('babelify')
-  .bundle()
-  .pipe(fs.createWriteStream('bundle.js'))

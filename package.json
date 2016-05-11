@@ -19,7 +19,7 @@
   "scripts": {
     "client": "sh riotserve.sh",
     "js": "../node_modules/.bin/webpack-dev-server --port 8088 --host 'localhost' --hot --content-base ./dist/ --config ./webpack/webpack.config.js --hot",
-    "browserify": "../node_modules/browserify/bin/cmd.js client/config/main.js -t ../node_modules/babelify/index.js --outfile dist/main.js",
+    "browserify": "../node_modules/browserify/bin/cmd.js --presets [ es2015 react ] client/config/main.js -t ../node_modules/babelify/index.js --outfile dist/main.js",
     "server": "LOG_LEVEL=info NODE_ENV=development nodemon -w server server/index.js",
     "css": "../node_modules/.bin/node-sass client/styles/ -o dist/",
     "css:watch": "../node_modules/.bin/node-sass -w client/styles/ -o dist/",
