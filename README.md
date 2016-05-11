@@ -5,10 +5,10 @@
 
 ## Setup ?
 
-- 1) install dependencies `npm i`
-- 2) move `node_modules` folder to a folder above the current one (Pls do not ask why ?:-))
-- 3) start the app by `npm run dev`
-- 4) go to `http://localhost:8080/#login?domain=user&page=login`
+-	install dependencies `npm i`
+-	move `node_modules` folder to a folder above the current one (Pls do not ask why ?:-))
+-	start the app by `npm run dev`
+-	go to `http://localhost:8080/#login?domain=user&page=login`
 
 
 
