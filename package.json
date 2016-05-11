@@ -1,0 +1,82 @@
+{
+  "name": "ves-flow-riot",
+  "version": "0.0.1",
+  "description": "riot + configurable events goodness",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:saurshaz/riot-applyx"
+  },
+  "homepage": "https://github.com/saurshaz/ves-flow",
+  "keywords": [
+    "riot",
+    "starter",
+    "boilerplate",
+    "template",
+    "webpack"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "client": "sh riotserve.sh",
+    "js": "../node_modules/.bin/webpack-dev-server --port 8088 --host 'localhost' --hot --content-base ./dist/ --config ./webpack/webpack.config.js --hot",
+    "browserify": "../node_modules/browserify/bin/cmd.js --presets [ es2015 react ] client/config/main.js -t ../node_modules/babelify/index.js --outfile dist/main.js",
+    "server": "LOG_LEVEL=info NODE_ENV=development nodemon -w server server/index.js",
+    "css": "../node_modules/.bin/node-sass client/styles/ -o dist/",
+    "css:watch": "../node_modules/.bin/node-sass -w client/styles/ -o dist/",
+    "html": "cp client/index.html dist/",
+    "html:watch": "../node_modules/.bin/onchange 'client/*.html' -v -- npm run html",
+    "serve": "cd dist && ../node_modules/.bin/httpserver",
+    "assets": "cp -R client/assets/ dist/assets/",
+    "assets:watch": "../node_modules/.bin/onchange 'client/assets/*.*' -v -- npm run assets",
+    "build:watch": "../node_modules/.bin/parallelshell 'npm run js:watch' 'npm run css:watch' 'npm run html:watch' 'npm run assets:watch'",
+    "dev": "../node_modules/.bin/parallelshell 'npm run js' 'npm run css:watch' 'npm run html:watch' 'npm run assets:watch'",
+    "deploy": "git subtree push --prefix dist origin gh-pages"
+  },
+  "author": "Saurshaz",
+  "devDependencies": {
+    "autoprefixer-core": "^6.0.1",
+    "babel": "^5.4.7",
+    "babel-core": "^5.4.7",
+    "babel-loader": "^5.1.3",
+    "css-loader": "^0.23.0",
+    "csswring": "^4.2.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.8.5",
+    "html-loader": "^0.3.0",
+    "postcss-css-variables": "^0.5.1",
+    "postcss-custom-properties": "^5.0.0",
+    "postcss-import": "^7.1.3",
+    "postcss-loader": "^0.8.0",
+    "postcss-nested": "^1.0.0",
+    "precss": "^1.4.0",
+    "react": "^0.11.0",
+    "react-hot-loader": "^1.2.8",
+    "riot": "^2.3.18",
+    "riot-compiler": "^2.3.23",
+    "riotjs-loader": "^3.0.0",
+    "style-loader": "^0.13.1",
+    "unused-files-webpack-plugin": "^2.0.2",
+    "url-loader": "^0.5.7",
+    "watch": "0.17.1",
+    "webpack": "^1.13.0",
+    "webpack-dev-server": "^1.14.1",
+    "webpack-hot-middleware": "2.6.0"
+  },
+  "engines": {
+    "node": "6.1.0"
+  },
+  "dependencies": {
+    "babelify": "^7.3.0",
+    "browserify": "^13.0.1",
+    "file-loader": "^0.8.5",
+    "habitat": "^3.1.2",
+    "httpserver": "^0.2.0",
+    "node-sass": "^3.7.0",
+    "onchange": "^2.4.0",
+    "parallelshell": "^2.0.0",
+    "ramda": "^0.21.0",
+    "riot": "^2.3.13",
+    "riot-router": "^0.7.3",
+    "superagent": "^1.6.1"
+  }
+}
