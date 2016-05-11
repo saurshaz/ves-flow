@@ -45,4 +45,4 @@
 |--|--|--|--|--|--|
 |   `button#login`   |   `click`    |   `-X-`   | `app.user.handleLogin` & `login_success` or `login_failure`  | `-X-` |  `-X-` |
 | `-X-`  | `-X-` | `login_success` | `app.user.stateChanged`  | `UserStore`, `AuthStore` | `LoginView`, `HomeView` |
-| `-X-`  | `-X-` | `login_failure` | `app.user.stateChanged` | `UserStore`, `AuthStore` |  `LoginView`, `HomeView` |
+| `-X-`  | `-X-` | `login_failure` | `app.user.stateChanged` |  `AuthStore` |  `LoginView` |
