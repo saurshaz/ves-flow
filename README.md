@@ -26,3 +26,6 @@
 ## Support welcome ##
 ## It's a work in progress ##
 ## Feedback/suggestions welcome, create an issue ##
+
+
+![Demo](/demo.gif)
