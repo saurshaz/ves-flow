@@ -8,3 +8,4 @@ dist/
 .sync
 .sync/
 ves-flow-config/
+*.log
