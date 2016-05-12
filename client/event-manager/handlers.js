@@ -13,7 +13,7 @@ let filterData = (passedValues) => {
   return passData
 }
 
-handlers['login'].handleLogin = function (data, store, cb, event) {
+handlers['login'].handleLogin = (data, store, cb, event) => {
   data = filterData(data)
   console.log(this)
   if (data.userId === 'saurshaz' && data.userPassword === 'password') {
@@ -27,7 +27,7 @@ handlers['login'].handleLogin = function (data, store, cb, event) {
   cb(null, this)
 }
 
-handlers['login'].handleResetLogin = function (data, store, cb, event) {
+handlers['login'].handleResetLogin = (data, store, cb, event) => {
   data = filterData(data)
   this.userId = ' '
   this.userPassword = ' '
