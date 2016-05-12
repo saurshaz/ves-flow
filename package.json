@@ -25,8 +25,8 @@
     "html": "cp client/index.html dist/",
     "html:watch": "../node_modules/.bin/onchange 'client/*.html' -v -- npm run html",
     "serve": "cd dist && ../../node_modules/.bin/http-server",
-    "assets": "../node_modules/.bin/parallelshell 'cp -R client/components dist/' 'cp -R client/config dist/' 'cp -R client/event-manager dist/' 'cp -R client/scripts dist/' 'cp -R client/styles dist/'",
-    "assets:watch": "../node_modules/.bin/onchange 'client/assets/*.*' -v -- npm run assets",
+    "assets": "../node_modules/.bin/parallelshell 'cp client/*.html dist/' 'cp -R client/components dist/' 'cp -R client/config dist/' 'cp -R client/event-manager dist/' 'cp -R client/scripts dist/' 'cp -R client/styles dist/'",
+    "assets:watch": "../node_modules/.bin/onchange 'client/**/*.*' -v -- npm run assets",
     "build:watch": "../node_modules/.bin/parallelshell 'npm run js' 'npm run css:watch' 'npm run html:watch' 'npm run assets:watch'",
     "dev": "npm run js && npm run assets:watch && npm run html:watch && npm run serve",
     "deploy": "git subtree push --prefix dist origin gh-pages"
@@ -69,6 +69,7 @@
     "babelify": "^7.3.0",
     "browserify": "^13.0.1",
     "file-loader": "^0.8.5",
+    "fs-web": "^1.0.1",
     "habitat": "^3.1.2",
     "node-sass": "^3.7.0",
     "onchange": "^2.4.0",

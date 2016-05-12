@@ -1,5 +1,6 @@
 var path = require('path')
 var webpack = require('webpack')
+var fs = require('fs')
 var outputPath = path.resolve(__dirname, '../dist')
 // process.env.HOST='188.166.230.193'
 var host = process.env.HOST || '0.0.0.0'
