@@ -1,9 +1,7 @@
 'use strict'
 
 import riot from 'riot'
-import events from '../event-manager/events'
-import store from '../event-manager/store'
-import PubSub from '../scripts/pubsub.js'
+import StoreWatcher from './mixins/storex'
 
 
 <sidenav>
@@ -19,21 +17,8 @@ import PubSub from '../scripts/pubsub.js'
     </div>
     <script>
       let self = this
-      let stores = ['user']
-      self.state = store.init()
-      self._ = self.state
-
-
-      self.on('mount', function() {
-         // todo :: make this move into a mixin which takes in an array 
-        stores.map((item, i) => {
-          PubSub.subscribe(item + '_updated', (data) => {
-            console.log(' update data >>> ',data)
-            self['_'][data.module][data.key]=data.val
-            self.update()
-          })
-        })
-        events.setupEvents(self)
-      })
+      self.stores =  ['user']
+      
+      self.mixin(StoreWatcher)
     </script>
 </sidenav>
