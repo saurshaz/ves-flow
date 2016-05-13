@@ -15,7 +15,7 @@ module.exports = {
     self._ = self.state
 
     self.on('mount', function () {
-      // todo :: make this move into a mixin which takes in an array 
+      // todo : try to get this stores from init param only
       self.stores.map((item, i) => {
         PubSub.subscribe(item + '_updated', (data) => {
           console.log(' update data >>> ', data)

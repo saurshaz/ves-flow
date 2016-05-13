@@ -3,6 +3,8 @@
 import riot from 'riot'
 import StoreWatcher from './mixins/storex'
 
+
+<!-- data from the store is under _.{storename}. -->
 <header>
     <div class="section top-nav fixed" style="    margin-left: 15%;">
       <nav id="messageSection">
@@ -12,7 +14,7 @@ import StoreWatcher from './mixins/storex'
     </div>
     <script>
       let self = this
-      self.stores =  ['user']
+      self.stores =  ['user']// todo :: try to move it to pass at time of init of mixin
       self.mixin(StoreWatcher)
     </script>
 </header>

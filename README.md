@@ -19,14 +19,15 @@
 -	move `node_modules` folder to a folder above the current one (Pls do not ask why ?:-))
 -	start the app by `npm start`
 -	go to `http://localhost:8080/#login?domain=user&page=login`
--   `npm run dev` for dev mode hot setup
+-   `npm run dev` for dev mode hot setup (in this case go to `http://localhost:8080/#login?domain=user&page=login`)
 
 
 ## What is this ?
 - An attempt to make app creation faster and segregate concerns involved
 - Steps to be there in an App development could be
 	- - create views (`presentation layer`)
-	- - hook up `events` into those views
+	- - mention stores array to watch in the view `script` portion use `StoreWatcherMixin`
+	- - hook up `events` into those views using `event-manager\evens` config file
 	- - keep `state` always at a central `store` (inspired by Flux architectures)
 	- - make the above process run with any view technology, and with and framework (as long as it's Javascript)
 	- - discourage `events` to `handler` binding within views. Keep all `handlers` at a seperate place in codebase(probably addable by a different developer)
