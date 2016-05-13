@@ -19,8 +19,8 @@ import PubSub from '../scripts/pubsub.js'
       self.state = store.init()
       self._ = self.state
 
-      // todo :: make this move into a mixin which takes in an array of all that is watched and updates self._ as needed (do minimal merging based on data needed) instead of assigning
-      PubSub.subscribe('user_updated', (data) => {
+       // todo :: make this move into a mixin which takes in an array of all that is watched and updates self._ as needed (do minimal merging based on data needed) instead of assigning
+      PubSub.subscribe(self.root.name+'_updated', (data) => {
         console.log(' update data >>> ',data)
         self['_'][data.module][data.key]=data.val
         self.update()
