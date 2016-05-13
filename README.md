@@ -17,9 +17,9 @@
 
 -	install dependencies `npm i`
 -	move `node_modules` folder to a folder above the current one (Pls do not ask why ?:-))
--	start the app by `npm run dev`
+-	start the app by `npm start`
 -	go to `http://localhost:8080/#login?domain=user&page=login`
-
+-   `npm run dev` for dev mode hot setup
 
 
 ## What is this ?

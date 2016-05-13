@@ -14,7 +14,6 @@ let filterData = (passedValues, module) => {
 }
 
 handlers['login'].handleLogin = function (data, store, cb, event) {
-  debugger
   data = filterData(data, 'login')
   console.log(this)
   if (data.userId === 'saurshaz' && data.userPassword === 'password') {

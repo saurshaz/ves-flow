@@ -15,6 +15,7 @@ module.exports = function () {
     },
     setState: function (module, key, val) {
       state[module][key] = val
+      console.log('state is -> ', state)
       PubSub.publish(module + '_updated', {module: module,key: key,val: val, state: state})
     },
     getState: function (storeName_key) {

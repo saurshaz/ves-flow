@@ -2,6 +2,7 @@
 
 import riot from 'riot'
 import events from '../event-manager/events'
+import store from '../event-manager/store'
 import PubSub from '../scripts/pubsub.js'
 
 <login>
@@ -15,22 +16,20 @@ import PubSub from '../scripts/pubsub.js'
     </div>
     <script>
       let self = this
+      let stores = ['user']
       self.state = store.init()
       self._ = self.state
 
-      // todo :: make this move into a mixin which takes in an array of all that is watched and updates self._ as needed (do minimal merging based on data needed) instead of assigning
-      PubSub.subscribe(self.root.name+'_updated', (data) => {
-        console.log(' update data >>> ',data)
-        self['_'][data.module][data.key]=data.val
-        self.update()
-      })
-
-      // TODO :: CHANGE STORE TO ACHIEVE BELOW
-      // self._.user.a = 'b'// invalid
-      // self._.setState('user.a','b')// valid
 
       self.on('mount', function() {
-        // todo :: make this a mixin instead
+         // todo :: make this move into a mixin which takes in an array 
+        stores.map((item, i) => {
+          PubSub.subscribe(item + '_updated', (data) => {
+            console.log(' update data >>> ',data)
+            self['_'][data.module][data.key]=data.val
+            self.update()
+          })
+        })
         events.setupEvents(self)
       })
     </script>

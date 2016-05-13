@@ -18,7 +18,7 @@
   "main": "index.js",
   "scripts": {
     "client": "sh riotserve.sh",
-    "js": "../node_modules/.bin/webpack-dev-server --port 8088 --host 'localhost' --hot --content-base ./dist/ --config ./webpack/webpack.config.js --hot",
+    "js": "../node_modules/.bin/webpack-dev-server --port 8088 --host 'localhost' --hot --content-base ./dist/ --config ./webpack/webpack.config.stage.js --hot",
     "browserify": "../node_modules/browserify/bin/cmd.js --presets [ es2015 react ] client/config/main.js -t ../node_modules/babelify/index.js --outfile dist/main.js",
     "css": "../node_modules/.bin/node-sass client/styles/ -o dist/",
     "css:watch": "../node_modules/.bin/node-sass -w client/styles/ -o dist/",
@@ -28,7 +28,8 @@
     "assets": "../node_modules/.bin/parallelshell 'cp client/*.html dist/' 'cp -R client/components dist/' 'cp -R client/config dist/' 'cp -R client/event-manager dist/' 'cp -R client/scripts dist/' 'cp -R client/styles dist/'",
     "assets:watch": "../node_modules/.bin/onchange 'client/**/*.*' -v -- npm run assets",
     "build:watch": "../node_modules/.bin/parallelshell 'npm run js' 'npm run css:watch' 'npm run html:watch' 'npm run assets:watch'",
-    "dev": "npm run js && npm run assets:watch && npm run html:watch && npm run serve",
+    "start": "npm run js && npm run assets:watch && npm run html:watch && npm run serve",
+    "dev": "../node_modules/.bin/webpack-dev-server --port 8088 --host 'localhost' --hot --content-base ./client/ --config ./webpack/webpack.config.js --hot",
     "deploy": "git subtree push --prefix dist origin gh-pages"
   },
   "author": "Saurshaz",

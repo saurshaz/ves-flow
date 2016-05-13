@@ -1,8 +1,6 @@
 'use strict'
 
 import riot from 'riot'
-
-import handlers from '../event-manager/handlers'
 import events from '../event-manager/events'
 import store from '../event-manager/store'
 import PubSub from '../scripts/pubsub.js'
@@ -16,33 +14,21 @@ import PubSub from '../scripts/pubsub.js'
     </div>
     <script>
       let self = this
+      let stores = ['user']
       self.state = store.init()
       self._ = self.state
 
-       // todo :: make this move into a mixin which takes in an array of all that is watched and updates self._ as needed (do minimal merging based on data needed) instead of assigning
-      PubSub.subscribe(self.root.name+'_updated', (data) => {
-        console.log(' update data >>> ',data)
-        self['_'][data.module][data.key]=data.val
-        self.update()
-      })
 
       self.on('mount', function() {
-        // riot.mount('*')
-        let domain = self.opts.domain
-        let page = self.opts.page
-
-        // debugger;
-        if(domain && page){
-          for(let idx in events[page]){
-            let event_json = events[page][idx]
-            let handler = event_json.handler
-            
-            self.root.querySelector(event_json.selector).addEventListener(event_json.event, handlers[page][handler].bind(self._,event_json.passedValues, store, (err,result) => {
-              self.update()
-              console.log('HEADER :: err -> ',err, ' result-> ',self._)
-            }))
-          }
-        }
+         // todo :: make this move into a mixin which takes in an array 
+        stores.map((item, i) => {
+          PubSub.subscribe(item + '_updated', (data) => {
+            console.log(' update data >>> ',data)
+            self['_'][data.module][data.key]=data.val
+            self.update()
+          })
+        })
+        events.setupEvents(self)
       })
     </script>
 </header>
