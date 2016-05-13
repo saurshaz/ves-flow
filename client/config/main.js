@@ -7,5 +7,4 @@
 // import '../lib/mixins/eh-mixin.js'
 // import '../lib/mixins/riot-creator-mixin.js'
 console.log(' app kickstarted ')
-let path = require('path')
 require('./router')

@@ -1,7 +1,7 @@
 'use strict'
 
-import events from '../../event-manager/events'
-import store from '../../event-manager/store'
+import events from '../events'
+import store from '../store'
 import PubSub from '../../scripts/pubsub'
 
 module.exports = {
