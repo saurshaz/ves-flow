@@ -5,15 +5,29 @@ import StoreWatcher from '../event-manager/mixins/storex'
 <login>
     <div class="section" style="margin-left:20%;padding-top:5%;width: 30%;vertical-align: middle;">
       <section id="messageSection" style="margin-left:2%;background-color:yellow;">Auth status is {_.user.authStatus}</section>
-      <input type="text" id="userid" placeholder="User Id" value="{_.userId}">
-      <input id="password" type="password" placeholder="Password" value="{_.userPassword}" >
+      <input type="text" id="userid" placeholder="User Id" onblur={validate} value='{_.user.userId}'>
+      <input id="password" type="password" placeholder="Password" value='{_.user.userPassword}' onblur={validate}>
+      <input id="repeatPassword" type="password" placeholder="Password Again" value='{_.user.userId}' onblur={validate}>
       <!-- todo :: use case repeat password use case -->
-      <button id="submitLogin">Login</button>
-      <button id="resetLogin">Reset</button>
+      <div if={_.user.loginform.validated}>
+        <button id="submitLogin">Login</button>
+      </div>
+      <button id="resetLogin" onclick={resetHandler}>Reset</button>
+
     </div>
     <script>
       let self = this
-      self.stores = ['user']
+
+      // for validations
+      //  - add a validationform
+      //  - add a validate function in the handlers['<tag-name>'] section to set result
+      //                into state.<store>.<validationform>.validated property
+      self.stores = ['user'] // stores to watch
+      self.validationform = ['loginform'] // validation form . this will have validated field
+
+      // for store watching
+      // import StoreWatcher from ../../event-manager/mixins/storex
+      // self.mixin(StoreWatcher)
       self.mixin(StoreWatcher)
     </script>
 </login>
