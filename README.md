@@ -49,7 +49,7 @@
 #### How a component logic looks ?
 	 
 
-	 ```javascript
+	 ```
 	 let self = this
 
      // for validations
