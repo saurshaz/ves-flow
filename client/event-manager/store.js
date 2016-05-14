@@ -1,11 +1,9 @@
 'use strict'
-let PubSub = require('../scripts/pubsub.js')
-// todo :: implement universal state here
-// make the change in needed JSOn and then emit an update change for that store
+let PubSub = require('./pubsub.js')
 
 // todo :: restrict property access without `setState`
 let state = {
-  global: {}, user: {authStatus: false}, misc: {}
+  global: {}, user: {authStatus: false, userId: '', userPassword: ''}, misc: {}
 }
 
 module.exports = function () {

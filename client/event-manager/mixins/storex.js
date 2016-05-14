@@ -2,7 +2,7 @@
 
 import events from '../events'
 import store from '../store'
-import PubSub from '../../scripts/pubsub'
+import PubSub from '../pubsub'
 
 module.exports = {
   // init method is a special one which can initialize
