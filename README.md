@@ -49,7 +49,16 @@
 #### How a component logic looks ?
 	 
 
-	 ```
+```
+	import StoreWatcher from '../event-manager/mixins/storex'
+
+	<comp1>
+		<div>
+			<p> Hello World </p>
+			.... ... 
+		</div>
+	</comp1>
+
 	 let self = this
 
      // for validations
@@ -63,7 +72,7 @@
      // import StoreWatcher from ../../event-manager/mixins/storex
      // self.mixin(StoreWatcher)
      self.mixin(StoreWatcher)
-     ```
+```
 
 
 
