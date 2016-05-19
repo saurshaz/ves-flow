@@ -78,9 +78,9 @@
 ##### You'll interact with these in following manner
 
 - **Handlers**
- - - Each View will have one or more handlers it will interact with 
- - - Handlers are where logic will be written (including DOM selectors) and value fetching. 
- - - handlers.js will need be modified to add your logic. Logic will look like - 
+ - - Each `View` will have one or more handlers it will interact with 
+ - - `Handlers` are where logic will be written (including DOM selectors) and value fetching. 
+ - - `handlers.js` will need be modified to add your logic. Logic will look like - 
  ```
 	var handlers = {}
 	handlers['login'] = {}
@@ -120,7 +120,7 @@
 
 
 - **Store**
- - - Each View will be watching none or many stores (that are defined in the `StoreWatcherMixin` in the `View` layer component)
+ - - Each `View` will be watching none or many `stores` (that are defined in the `StoreWatcherMixin` in the `View` layer component)
  - - You just need to add the store structure for your view in the universal Store JSON in `store.json` 
  - - store.js relavent code will look like - 
  	```
@@ -131,37 +131,37 @@
  - - Other than this, nothing needs be touched in store.js
 
 
- - **Events** 
- 	- - this will be the configurable events matching map for each component with all it's events and handlers
- 	- - basically you'll declare in JSON terms, different events and associated handlers taht you want to bind to in a view layer
- 	- - `events.js` relavent code will look like - 
- 		```
-	
-		let eventsConfig = {}
-
-		// login components config
-		eventsConfig.login = []
-		eventsConfig.login.push({
-		  selector: {
-		    nodename: 'BUTTON',// type of node in capitals
-		    nodeid: 'submitLogin'// id value
-		  },
-		  event: 'click',// what event
-		  handler: 'handleLogin'// handler callable on this event
-		})
-
-		eventsConfig.login.push({
-		  selector: {
-		    nodename: 'BUTTON',// type of node in capitals
-		    nodeid: 'resetLogin'// id value
-		  },
-		  event: 'click',// what event
-		  handler: 'handleResetLogin'// handler callable on this event
-		})
+- **Events** 
+	- - this will be the configurable `events` matching map for each `view` with all it's `events` and `handlers`
+	- - basically you'll declare in JSON terms, different `events` and associated `handlers` that you want to bind to in a `view` layer
+	- - `events.js` relavent code will look like - 
 		```
+
+	let eventsConfig = {}
+
+	// login components config
+	eventsConfig.login = []
+	eventsConfig.login.push({
+	  selector: {
+	    nodename: 'BUTTON',// type of node in capitals
+	    nodeid: 'submitLogin'// id value
+	  },
+	  event: 'click',// what event
+	  handler: 'handleLogin'// handler callable on this event
+	})
+
+	eventsConfig.login.push({
+	  selector: {
+	    nodename: 'BUTTON',// type of node in capitals
+	    nodeid: 'resetLogin'// id value
+	  },
+	  event: 'click',// what event
+	  handler: 'handleResetLogin'// handler callable on this event
+	})
+	```
 
 ## Look at Events for How this is fast-changing :-) ##
 
-** Thanks **
+**Thanks**
 
 
