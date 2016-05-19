@@ -46,7 +46,7 @@
 - This is not **PubSub** only, but some part of it is
 - Here's a mind-map of the system. A more detailed arch-diagram will be there as things evolve
 
-#### How a component logic looks ?
+#### How a View logic looks ?
 	 
 
 ```
@@ -74,10 +74,94 @@
      self.mixin(StoreWatcher)
 ```
 
+#### In addition to the Views, you'll have Handlers, Events and Store
+##### You'll interact with these in following manner
+
+- **Handlers**
+ - - Each View will have one or more handlers it will interact with 
+ - - Handlers are where logic will be written (including DOM selectors) and value fetching. 
+ - - handlers.js will need be modified to add your logic. Logic will look like - 
+ ```
+	var handlers = {}
+	handlers['login'] = {}
+	handlers['login'].handleLogin = function (data, store, cb, event) {
+	  let context = this
+	  data.userId = document.querySelector('[data-is="' + data.page + '"] ' + 'input#userid').value
+	  data.userPassword = document.querySelector('[data-is="' + data.page + '"] ' + 'input#password').value
+
+	  if (data.userId === 'saurshaz' && data.userPassword === 'password') {
+	    store.setState('user', 'userId', '')
+	    store.setState('user', 'userPassword', '')
+	    store.setState('user', 'me', data.userId)
+	    store.setState('user', 'authStatus', true)
+	  // todo : the screen shall ideally change now
+	  } else {
+	    store.setState('user', 'userId', data.userId)
+	    store.setState('user', 'userPassword', data.userPassword)
+	    store.setState('user', 'me', data.userId)
+	    store.setState('user', 'authStatus', false)
+	  }
+	  cb(null, this)
+	}
+
+	.... 
+	.... 
+
+	and so on.. multiple entries
+
+	- data, store, cb, event are the inputs
+	- You'll get data - domain name and page name
+	- cb will be the flow return callback that u will use. expects (err, res)
+	- store will be the centrat store for the app (covered below)
+	- event is something that will seldom be needed to be touched (Advanced usage)
+
+ ```
 
 
-| DOM Selector | Events | Emit Signal | Handler (has state and logic to change that, emits event at end) | Store (state changes)| Views Affected (Views watche for state changes and adjust) |
-| --- | --- | --- | --- | --- | --- | --- |  ---|
-|   `button#login`   |   `click`    |   `-X-`   | `app.user.handleLogin` & `login_success` or `login_failure`  | `-X-` |
-| `-X-`  | `-X-` | `login_success` | `app.user.stateChanged`  | `UserStore`, `AuthStore` | `LoginView`, `HomeView` |
-| `-X-`  | `-X-` | `login_failure` | `app.user.stateChanged` |  `AuthStore` |  `LoginView` |
+
+- **Store**
+ - - Each View will be watching none or many stores (that are defined in the `StoreWatcherMixin` in the `View` layer component)
+ - - You just need to add the store structure for your view in the universal Store JSON in `store.json` 
+ - - store.js relavent code will look like - 
+ 	```
+	let state = {
+	  global: {}, fyler: {request: '',requestjson: {}, response: '', err: ''}, user: {authStatus: false, userId: '', userPassword: '', loginform: {validated: false}}, misc: {}
+	}
+	```
+ - - Other than this, nothing needs be touched in store.js
+
+
+ - **Events** 
+ 	- - this will be the configurable events matching map for each component with all it's events and handlers
+ 	- - basically you'll declare in JSON terms, different events and associated handlers taht you want to bind to in a view layer
+ 	- - `events.js` relavent code will look like - 
+ 		```
+	
+		let eventsConfig = {}
+
+		// login components config
+		eventsConfig.login = []
+		eventsConfig.login.push({
+		  selector: {
+		    nodename: 'BUTTON',// type of node in capitals
+		    nodeid: 'submitLogin'// id value
+		  },
+		  event: 'click',// what event
+		  handler: 'handleLogin'// handler callable on this event
+		})
+
+		eventsConfig.login.push({
+		  selector: {
+		    nodename: 'BUTTON',// type of node in capitals
+		    nodeid: 'resetLogin'// id value
+		  },
+		  event: 'click',// what event
+		  handler: 'handleResetLogin'// handler callable on this event
+		})
+		```
+
+## Look at Events for How this is fast-changing :-) ##
+
+** Thanks **
+
+
