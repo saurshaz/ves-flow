@@ -11,14 +11,20 @@ module.exports = {
   // accessible from the tag its mixed in
   init: function (stores) {
     // this.on('updated', function () { console.log('Updated!') })
+
     let self = this
     self.state = store.init()
     self._ = self.state
-    let identifier = self.root.getAttribute('data-is')
+
+    // / setup all events
+    PubSub.publish('setup_all_events', {context: self})
+
     self.on('mount', function () {
+      let identifier = self.root.getAttribute('data-is')
       // todo : try to get this stores from init param only
       self.stores.map((item, i) => {
         //  todo :: validation needed shall be fetched from module name
+        // debugger
         PubSub.subscribe(item + '_updated', (data) => {
           for (let i in self.validationform) {
             if (data.key === self.validationform[i] && data.val.validated && data.val.validated === true) {
@@ -27,15 +33,23 @@ module.exports = {
               PubSub.publish(identifier + '_destroy_events', {context: self})
             }
           }
+
           console.debug(' update data >>> ', data)
           self['_'][data.module][data.key] = data.val
           self.update()
         })
       })
+
+      if (identifier && handlers[identifier] && handlers[identifier].onmount && (typeof handlers[identifier].onmount === 'function')) {
+        handlers[identifier].onmount.call(self, {page: identifier, domain: self.opts.domain}, store, null, null)
+      }
     })
 
     self.validate = () => {
-      handlers[identifier].validate.call(self, null, store, null, null)
+      let identifier = this.opts.dataIs
+      if (identifier && handlers[identifier] && handlers[identifier].validate && (typeof handlers[identifier].validate === 'function')) {
+        handlers[identifier].validate.call(self, {page: identifier, domain: self.opts.domain}, store, null, null)
+      }
     }
   }
 }
