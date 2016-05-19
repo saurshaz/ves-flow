@@ -160,7 +160,7 @@
 	})
 	```
 
-## Look at Events for How this is fast-changing :-) ##
+## Look at Issues for How this is fast-changing :-) ##
 
 **Thanks**
 
