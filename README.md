@@ -3,6 +3,9 @@
 ##  **V**iews (configurable)**E**vents **S**tate       ##
 #########################################################
 
+
+--- DEPRECATED --- 
+
 [![Join the chat at https://gitter.im/saurshaz/ves-flow](https://badges.gitter.im/saurshaz/ves-flow.svg)](https://gitter.im/saurshaz/ves-flow?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 - Example at http://saurshaz.github.io/ves-flow/#login?domain=user&page=login
